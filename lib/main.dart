@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'index/index.dart';
 
+/// 主函数入口
 void main() => runApp(new Parking());
 
 class Parking extends StatelessWidget {
