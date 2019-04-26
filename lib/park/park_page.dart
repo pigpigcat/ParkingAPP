@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../global_config.dart';
+import 'parking_list.dart';
 
 class ParkPage extends StatefulWidget {
   @override
@@ -14,7 +15,12 @@ class _ParkPageState extends State<ParkPage> {
           appBar: new AppBar(
             title: new Text('停车场'),
           ),
-          body: new Center(child: null),
+          body: new ListView.builder(
+            itemBuilder: (context, index) {
+              return new ParkingList();
+            },
+            itemCount: 10,
+          ),
         ),
         theme: GlobalConfig.themeData);
   }

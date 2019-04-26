@@ -11,8 +11,7 @@ class Index extends StatefulWidget {
 }
 
 class _IndexState extends State<Index> with TickerProviderStateMixin {
-  // tabbarIndex?
-  int _currentIndex = 0;
+  int _selectedIndex = 0;
   List<NavigationIconView> _navigationViews;
   List<StatefulWidget> _pageList;
 
@@ -43,7 +42,7 @@ class _IndexState extends State<Index> with TickerProviderStateMixin {
       view.controller.addListener(_rebuild);
     }
     _pageList = <StatefulWidget>[new ParkPage(), new OrderPage(), new MePage()];
-    _currentPage = _pageList[_currentIndex];
+    _currentPage = _pageList[_selectedIndex];
   }
 
   void _rebuild() {
@@ -65,15 +64,15 @@ class _IndexState extends State<Index> with TickerProviderStateMixin {
             .map((NavigationIconView navigationIconView) =>
                 navigationIconView.item)
             .toList(),
-        currentIndex: _currentIndex,
+        currentIndex: _selectedIndex,
         fixedColor: Colors.blue,
         type: BottomNavigationBarType.fixed,
         onTap: (int index) {
           setState(() {
-            _navigationViews[_currentIndex].controller.reverse();
-            _currentIndex = index;
-            _navigationViews[_currentIndex].controller.forward();
-            _currentPage = _pageList[_currentIndex];
+            _navigationViews[_selectedIndex].controller.reverse();
+            _selectedIndex = index;
+            _navigationViews[_selectedIndex].controller.forward();
+            _currentPage = _pageList[_selectedIndex];
           });
         });
 
