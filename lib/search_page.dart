@@ -7,13 +7,20 @@ class SearchPage extends StatefulWidget {
 }
 
 class SearchPageState extends State<SearchPage> {
+// Flutter中几乎所有对象都是一个Widget，Widget的功能是“描述一个UI元素的配置数据”,
+// Flutter中真正代表屏幕上显示元素的类是Element，真正渲染时，UI树的每一个Widget节点都会对应一个Element对象
   Widget searchInput() {
+    // Container 创建矩形视觉元素。
     return new Container(
+      // Row创建水平方向灵活布局,Column同理。基于Web的flex模型。
       child: new Row(
         children: <Widget>[
           new Container(
+            // FlatButton:扁平按钮,默认背景透明并不带阴影。RaisedButton、OutlineButton、IconButton
             child: new FlatButton.icon(
+              // 回调函数
               onPressed: () {
+                // context由flutter自动注入,这行代码意思是路由出栈。
                 Navigator.of(context).pop();
               },
               icon: new Icon(Icons.arrow_back, color: GlobalConfig.fontColor),
@@ -21,11 +28,13 @@ class SearchPageState extends State<SearchPage> {
             ),
             width: 60.0,
           ),
+          // Expanded:按比例“扩伸”Row、Column和Flex子widget所占用的空间。
           new Expanded(
+            // TextField用于文本输入
             child: new TextField(
               autofocus: true,
               decoration: new InputDecoration.collapsed(
-                  hintText: "搜索比乎内容",
+                  hintText: "搜索内容",
                   hintStyle: new TextStyle(color: GlobalConfig.fontColor)),
             ),
           )
@@ -49,7 +58,7 @@ class SearchPageState extends State<SearchPage> {
               child: new Column(
                 children: <Widget>[
                   new Container(
-                    child: new Text("比乎热搜",
+                    child: new Text("热搜",
                         style: new TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16.0)),
                     margin: const EdgeInsets.only(
